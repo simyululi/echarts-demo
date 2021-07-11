@@ -49,18 +49,18 @@ export default {
           {
             type: "category",
             data: [
-              "动作片",
-              "动画片",
-              "电视剧",
-              "纪录片",
-              "综艺片",
-              "恐怖片",
+              "101",
+              "102",
+              "103",
+              "104",
+              "105",
+              "106",
             ],
             axisTick: {
               alignWithLabel: true,
             },
             axisLabel: {
-              color: "rgba(255,255,255,.6)",
+              color: "rgba(7,0,0,0.6)",
               fontSize: "12",
             },
           },
@@ -69,11 +69,11 @@ export default {
           {
             type: "value",
             axisLabel: {
-              color: "rgba(255,255,255,.6)",
+              color: "rgba(17,0,0,0.6)",
               fontSize: "12",
             },
             lineStyle: {
-              color: "rgba(255,255,255,.1)",
+              color: "rgba(3,0,0,0.1)",
               width: 1,
               type: "solid",
             },
@@ -86,7 +86,7 @@ export default {
         ],
         series: [
           {
-            name: "直接访问",
+            name: "bar",
             type: "bar",
             barWidth: "60%",
             data: data,

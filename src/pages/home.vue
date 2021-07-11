@@ -11,7 +11,7 @@
         </div>
         <div class="chart">
           <h2>表2</h2>
-          <bar :sellData="barData"></bar>
+          <line-chart :lineData="lineData"></line-chart>
         </div>
         <div class="chart">
           <h2>表3</h2>
@@ -28,15 +28,19 @@
 
 <script>
   import Bar from "@/components/bar";
+  import lineChart from "@/components/lineChart";
   import '@/assets/china.js'
   export default {
     name: "home",
     components: {
-      Bar
+      Bar,
+      lineChart,
     },
     data(){
       return{
         barData:[10, 52, 200, 334, 390, 330, 220],
+        lineData:[33, 43, 270, 864, 367, 120, 20],
+        curName:'',
       }
     },
     mounted() {
@@ -74,16 +78,19 @@
               },
             },
           },
-          // series: series,
         }
         this.myChart.setOption(chartOptions)
         this.myChart.on('click', function (params) {
           console.log(params.name);
-          let arr = []
-          for(let i = 0; i < 7; i++){
-            arr[i] = Math.floor(Math.random() * (1000 - 1)) + 1
+          if(params.name !== self.curName){
+            let arr = []
+            for(let i = 0; i < 7; i++){
+              arr[i] = Math.floor(Math.random() * (1000 - 1)) + 1
+            }
+            self.barData = [...arr]
+            self.lineData = [...arr]
           }
-          self.barData = [...arr]
+          self.curName = params.name
         })
       },
     }
@@ -140,8 +147,10 @@
     width: 100%;
     /*border:1px solid #2c3e50 ;*/
     background-color: #fff;
-    box-shadow: 5px 5px 5px 5px aliceblue;
+    box-shadow: 5px 5px 5px 5px #bfd0dd;
+    /*border:1px solid #0a0606;*/
   }
+
   h2{
     height: 48px;
     line-height: 48px;
@@ -162,6 +171,6 @@
     height: 759px;
     margin-top: 18px;
     background-color: #fff;
-    box-shadow: 5px 5px 5px 5px aliceblue;
+    box-shadow: 5px 5px 5px 5px #bfd0dd;
   }
 </style>
